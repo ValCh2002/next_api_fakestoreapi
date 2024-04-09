@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { ShowProducts } from "./components/ShowProductsPage";
+import { AddProduct } from "../components/AddProductPage";
 
 export default function IndexPage() {
-  return <ShowProducts/>
+  return <AddProduct/>
 }
 
 export const metadata: Metadata = {
-  title: "Show Products",
+  title: "Add Product",
 };

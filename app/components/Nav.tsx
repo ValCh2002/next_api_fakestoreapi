@@ -1,10 +1,10 @@
-"use client";
-"use client";
+'use client';
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-import styles from "../styles/layout.module.css";
+import styles from '../styles/layout.module.css';
 
 export const Nav = () => {
   const pathname = usePathname();
@@ -12,26 +12,16 @@ export const Nav = () => {
   return (
     <nav className={styles.nav}>
       <Link
-        className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
+        className={`${styles.link} ${pathname === '/' ? styles.active : ''}`}
         href="/"
       >
-        Home
+        Show Products
       </Link>
       <Link
-        className={`${styles.link} ${
-          pathname === "/verify" ? styles.active : ""
-        }`}
-        href="/verify"
+        className={`${styles.link} ${pathname === '/addProduct' ? styles.active : ''}`}
+        href="/addProduct"
       >
-        Verify
-      </Link>
-      <Link
-        className={`${styles.link} ${
-          pathname === "/quotes" ? styles.active : ""
-        }`}
-        href="/quotes"
-      >
-        Quotes
+        Add Product
       </Link>
     </nav>
   );

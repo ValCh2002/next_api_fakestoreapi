@@ -7,9 +7,13 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.0",
+    "boostrap": "^2.0.0",
+    "bootstrap": "^5.3.3",
     "next": "latest",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.2",
     "react-redux": "^9.1.0"
   },
   "devDependencies": {

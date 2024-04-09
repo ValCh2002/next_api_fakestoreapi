@@ -27,12 +27,13 @@ export const ShowProducts = React.memo(() => {
   }, []);
   return (
     <div>
-      <h3>Show Products</h3>
+      <h3 style={{margin:"35px"}}>Show Products</h3>
+      <div className='selects'>
       <Form.Select
         onChange={(e) => {
           dispatch(getProductsByCategoryData(e.target.value));
         }}
-      >
+        >
         <option value="" hidden>
           All Categories
         </option>
@@ -50,39 +51,43 @@ export const ShowProducts = React.memo(() => {
             dispatch(getProductsData(''));
           }
         }}
-      >
+        >
         <option value="">All Products</option>
-        <option value="desc">desc</option>
-        <option value="asc">asc</option>
+        <option value="desc">Expensive First</option>
+        <option value="asc">Cheap First</option>
       </Form.Select>
+      </div>
       <input
         type="number"
         onChange={(e) => {
           dispatch(getProductLimitData(+e.target.value));
         }}
       />
-      <div>
+      <div className='products'>
         {products.map((elm) => {
           return (
             <Card
-              style={{ width: '15rem', display: 'inline-block' }}
+              style={{ width: '15rem' }}
               key={elm.id}
             >
-              <Card.Img variant="top" src={elm.image}  />
+              <Card.Img variant="top" src={elm.image} height='220px'  />
               <Card.Body>
                 <Card.Title>{elm.title}</Card.Title>
+                <div className='btnLink'>
+
                 <Link href={'/details/' + elm.id}>See More</Link>
                 <Button
                   variant="primary"
                   onClick={() => {
                     dispatch(deleteProductByIdData(elm.id))
-                      .unwrap()
-                      .then(console.log)
-                      .catch(console.warn);
+                    .unwrap()
+                    .then(console.log)
+                    .catch(console.warn);
                   }}
-                >
+                  >
                   &times;
                 </Button>
+                  </div>
               </Card.Body>
             </Card>
           );

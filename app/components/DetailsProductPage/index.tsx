@@ -1,6 +1,7 @@
 'use client';
 import { IProduct } from '@/app/type/type';
 import {
+  getAllCategoriesData,
   getProductByIdData,
   selectCategories,
   selectProduct,
@@ -23,23 +24,24 @@ export const DetailsProduct = React.memo(({ id }: { id: number }) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getProductByIdData(id));
+    dispatch(getAllCategoriesData(''))
   }, []);
   const save = (data: IProduct) => {
     console.log(data);
   };
   return (
-    <div>
-      <h3>Details Product</h3>
-      <Card style={{ width: '22rem' }}>
+    <div >
+      <h3 style={{margin:"35px"}}>Details Product</h3>
+      <Card style={{ width: '22rem',margin:'auto' }}>
         <Card.Title>{product.title}</Card.Title>
-        <Card.Img variant="top" src={product.image} />
+        <Card.Img variant="top" src={product.image} height='350px'/>
         <Card.Body>
           <Card.Text>{product.price}$</Card.Text>
           <Card.Text>Category - {product.category}</Card.Text>
           <Card.Text>{product.description}</Card.Text>
         </Card.Body>
       </Card>
-
+      <h3 style={{margin:"35px"}}>Update This Product</h3>
       <Form onSubmit={handleSubmit(save)}>
         <Row className="mb-3">
           <Form.Group as={Col} md="4" controlId="validationCustom01">
@@ -80,15 +82,14 @@ export const DetailsProduct = React.memo(({ id }: { id: number }) => {
             <Form.Label>Image URL</Form.Label>
             <Form.Control type="text" defaultValue={product.image} {...register('image')}/>
           </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom04">
-            <Form.Label>State</Form.Label>
-            <Form.Control type="text" placeholder="State" required />
-            <Form.Control.Feedback type="invalid">
-              Please provide a valid state.
-            </Form.Control.Feedback>
+          <Form.Group>
+            <Form.Select {...register('category')}  value={product.category} >
+              {categories.map((elm,i)=>{
+                return <option key={i} >{elm}</option> 
+              })}
+            </Form.Select>
           </Form.Group>
         </Row>
-
         <Button type="submit">Submit form</Button>
       </Form>
     </div>

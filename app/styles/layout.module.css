@@ -10,10 +10,6 @@
   min-height: 100vh;
 }
 
-.logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
 .header {
   grid-area: header;
@@ -41,21 +37,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 45px;
   padding: 8px;
-  font-size: calc(10px + 2vmin);
+  background: black;
+  color: white;
+  font-size: 15px;
 }
 
 .link:hover {
-  text-decoration: underline;
+  background: white;
+  color: black;
+  border-radius: 5px;
+  transition: 0.4s;
 }
 
 .link {
-  color: #704cb6;
+  color: white;
+  text-decoration: none;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 .link.active {
-  text-decoration: underline;
+    font-size: 24px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

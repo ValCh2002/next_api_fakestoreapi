@@ -56,13 +56,13 @@ export const ShowProducts = React.memo(() => {
         <option value="desc">Expensive First</option>
         <option value="asc">Cheap First</option>
       </Form.Select>
-      </div>
-      <input
+      <input placeholder='How Many products?'
         type="number"
         onChange={(e) => {
           dispatch(getProductLimitData(+e.target.value));
         }}
       />
+      </div>
       <div className='products'>
         {products.map((elm) => {
           return (

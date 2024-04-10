@@ -5,6 +5,7 @@ import {
   getProductByIdData,
   selectCategories,
   selectProduct,
+  updateProductData,
 } from '@/lib/features/product/productSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import React, { useEffect } from 'react';
@@ -27,6 +28,7 @@ export const DetailsProduct = React.memo(({ id }: { id: number }) => {
     dispatch(getAllCategoriesData(''))
   }, []);
   const save = (data: IProduct) => {
+    dispatch(updateProductData(data)).unwrap().then(console.log).catch(console.warn)
     console.log(data);
   };
   return (

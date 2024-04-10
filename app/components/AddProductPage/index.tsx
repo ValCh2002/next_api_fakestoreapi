@@ -1,6 +1,6 @@
 'use client'
 import { IProduct } from "@/app/type/type";
-import { getAllCategoriesData, selectCategories } from "@/lib/features/product/productSlice";
+import { createProductData, getAllCategoriesData, selectCategories } from "@/lib/features/product/productSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -14,7 +14,7 @@ export const AddProduct = React.memo(() => {
     dispatch(getAllCategoriesData(''))
   }, [])
   const addProduct = (data: IProduct) => {
-    console.log(data);
+    dispatch(createProductData(data)).unwrap().then(console.log).catch(console.warn)
     alert('Show this product in console')
     reset()
 

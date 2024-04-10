@@ -73,6 +73,7 @@ export const ShowProducts = React.memo(() => {
               <Card.Img variant="top" src={elm.image} height='220px'  />
               <Card.Body>
                 <Card.Title>{elm.title}</Card.Title>
+                <Card.Text>{elm.price}$</Card.Text>
                 <div className='btnLink'>
 
                 <Link href={'/details/' + elm.id}>See More</Link>
